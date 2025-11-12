@@ -80,8 +80,6 @@ public class Student {
         }
     }
 
-    // I'm getting 7 failed tests for bear bucks, and I can't figure out why.
-
     public void depositBearBucks(double amount){
         bearBucks+=amount;
     }
@@ -111,16 +109,17 @@ public class Student {
     }
 
 
-    // there is something in this method that isn't working correctly, cuz one test is failing.
     public Student createLegacy(String firstName, Student otherParent, boolean isHyphenated, int id){
         String legacyLastName;
         if (isHyphenated){
-            legacyLastName = this.lastName;
-        }
-        else {
             legacyLastName = this.lastName + "-" + otherParent.getLastName();
         }
+        else {
+            legacyLastName = this.lastName;
+        }
         Student legacy = new Student(firstName, legacyLastName, id);
+        legacy.depositBearBucks(this.cashOutBearBucks());
+        legacy.depositBearBucks(otherParent.cashOutBearBucks());
         return legacy;
     }
 
@@ -131,6 +130,3 @@ public class Student {
 
 	
 }
-
-// Overall, 8 failed tests, and I can't figure out why/what's wrong because it looks right to me.
-// But everything else seems to be working
