@@ -33,7 +33,7 @@ public class Course {
     }
 
     public int getSeatsRemaining(){
-        return capacity - this.getUnfilledSeats();
+        return this.getUnfilledSeats();
     }
 
     public int getCapacity() {
@@ -78,7 +78,7 @@ public class Course {
 
     public double calculateAverageGPA(){
         double gpaSum = 0.0;
-        int numStudents = this.getSeatsRemaining();
+        int numStudents = capacity - this.getSeatsRemaining();
         for (Student student : this.roster){
             if (student != null){
                 gpaSum+=student.calculateGradePointAverage();
